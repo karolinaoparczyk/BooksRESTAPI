@@ -1,0 +1,65 @@
+[
+  {
+    "model": "books.author",
+    "pk": 1,
+    "fields": {
+      "name": "John Ronald Reuel Tolkien"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 2,
+    "fields": {
+      "name": "J. R. R. Tolkien"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 3,
+    "fields": {
+      "name": "Corey Olsen"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 5,
+    "fields": {
+      "name": "Devin Brown"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 6,
+    "fields": {
+      "name": "Perry C. Bramlett"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 7,
+    "fields": {
+      "name": "Jim Ware"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 8,
+    "fields": {
+      "name": "Jude Fisher"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 9,
+    "fields": {
+      "name": "William Howard Green"
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 10,
+    "fields": {
+      "name": "Ed Strauss"
+    }
+  }
+]
