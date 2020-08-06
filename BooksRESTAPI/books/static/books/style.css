@@ -1,5 +1,6 @@
 #wrapper {
-  display: flex;
+    margin: 40px 20px;
+    display: flex;
 }
 #imgdiv {
     margin: 0px 20px;
@@ -8,13 +9,26 @@
     margin: 0px 20px;
 }
 
-.filter_clear .clear_button {
+.filter_clear .clear_link {
     margin: 10px 0px 0px 0px;
 }
 
-.button_div .add_button {
-    margin: 10px 0px 10px 0px;
+.button_div .add_link {
+    margin: 20px 0px 10px 0px;
 }
 a:hover, a:visited, a:link, a:active{
     text-decoration: none;
+}
+
+#filter_div{
+    margin: 20px 20px;
+}
+
+#all_content{
+    margin: 40px 20px 0px 20px;
+}
+
+h1 {
+    margin: 0px 20px 0px 20px;
+
 }

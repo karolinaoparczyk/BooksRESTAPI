@@ -20,5 +20,5 @@ class BookFilterFormHelper(crispy_forms.helper.FormHelper):
     layout = Layout(
         'published_date',
         'authors',
-        Submit('submit', 'Search', css_class="btn-primary"),
+        Submit('submit', 'Search',),
     )

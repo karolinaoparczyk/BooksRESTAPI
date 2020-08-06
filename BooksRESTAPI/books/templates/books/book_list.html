@@ -10,19 +10,25 @@
     <meta charset="UTF-8">
     <title>Books REST API</title>
     <link rel="stylesheet" href="{% static 'books/style.css' %}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
 </head>
 <body>
-{% crispy filter.form filter.form.helper %}
-<div class="filter_clear">
-{% if has_filter %}
-    <button class="clear_button" class="btn btn-success" type="button"><a href="{%  url 'books' %}">Clear all filters</a></button>
-{% endif %}
+<div id="all_content">
+    <h1 class="text-primary">Books</h1>
+    <div id="filter_div">
+        {% crispy filter.form filter.form.helper %}
+        <div class="filter_clear">
+            {% if has_filter %}
+            <a class="clear_link" href="{%  url 'books' %}">Clear all filters</a>
+            {% endif %}
+        </div>
+        <div class="button_div">
+            <a class="add_link" href="{%  url 'get_books' %}">Add books with 'war' in the title</a>
+        </div>
+    </div>
+    {% render_table table %}
 </div>
-<div class="button_div">
-    <button class="add_button" class="btn btn-success" type="button"><a href="{%  url 'get_books' %}">Add books with 'war' in the title</a></button>
-</div>
-{% render_table table %}
 </body>
 </html>
