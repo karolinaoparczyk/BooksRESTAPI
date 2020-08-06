@@ -1,5 +1,5 @@
-import crispy_forms
 import django_filters
+from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Submit
 from django_filters import FilterSet
 
@@ -12,7 +12,7 @@ class BookFilter(FilterSet):
         model = Book
         fields = ['published_date', 'authors']
 
-class BookFilterFormHelper(crispy_forms.helper.FormHelper):
+class BookFilterFormHelper(FormHelper):
     form_method = 'GET'
     form_class = 'form-horizontal'
     label_class = 'col-lg-2'
