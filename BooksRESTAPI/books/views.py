@@ -1,17 +1,17 @@
 from django.http import HttpResponse
-from django.template import loader
+from django_tables2 import SingleTableView
 
+from .filters import BookFilter
 from .models import Book
+from .tables.tables import BookTable
 
 
-def books(request):
-    books_list = Book.objects.all()
-    template = loader.get_template('books/books_list.html')
-    context = {
-        'books': books_list,
-    }
-    return HttpResponse(template.render(context, request))
-
+class BookListView(SingleTableView):
+    model = Book
+    table_class = BookTable
+    template_name = 'books/book_list.html'
+    filterset_class = BookFilter
+    
 
 def detail(request, book_id):
     return HttpResponse("book %s" % book_id)

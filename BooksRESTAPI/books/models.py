@@ -2,6 +2,8 @@ from django.db import models
 
 
 class Author(models.Model):
+    objects = models.Manager()
+
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -9,6 +11,8 @@ class Author(models.Model):
 
 
 class Category(models.Model):
+    objects = models.Manager()
+
     name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -16,6 +20,9 @@ class Category(models.Model):
 
 
 class Book(models.Model):
+    class Meta:
+        unique_together = (("title", "published_date"),)
+
     objects = models.Manager()
 
     title = models.CharField(max_length=300)
