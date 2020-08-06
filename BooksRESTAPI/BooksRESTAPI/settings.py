@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 from decouple import config
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -100,6 +101,7 @@ DATABASES = {
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
         'PORT': '',
+        'CONN_MAX_AGE': 500
     }
 }
 
@@ -147,3 +149,6 @@ USE_TZ = True
 
 STATIC_URL = '/books/static/'
 STATIC_ROOT = "/static/"
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
