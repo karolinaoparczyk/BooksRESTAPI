@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap3',
     'crispy_forms',
+    'rest_framework',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +79,8 @@ DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 WSGI_APPLICATION = 'BooksRESTAPI.wsgi.application'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap4', )
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -129,5 +133,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/books/static/'
 STATIC_ROOT = "/static/"

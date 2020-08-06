@@ -8,7 +8,7 @@ from ..models import Book
 class BookTable(tables.Table):
     title = tables.Column(orderable=False)
     published_date = tables.Column(order_by='published_date')
-    edit = TemplateColumn(template_name='tables/open_details_column.html', verbose_name="")
+    edit = TemplateColumn(template_name='tables/details_column.html', verbose_name="")
     formhelper_class = BookFilterFormHelper
 
     class Meta:

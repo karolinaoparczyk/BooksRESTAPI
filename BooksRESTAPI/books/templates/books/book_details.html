@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}">
+</head>
+<body>
+<h1>{{ book.title }}</h1>
+<div id="wrapper">
+    <div id=imgdiv"><img src="{{ book.thumbnail }}" alt="{{ book.title }}" width="150" height="230"></div>
+    <div id="datadiv"><p><b>Authors:</b>
+        {% for author in book.authors.all %}
+        {{ author.name }}
+        {% endfor %}</p>
+        <p><b>Published date:</b> {{ book.published_date }}</p>
+        <p><b>Categories:</b>
+            {% if book.categories %}
+                {% for category in book.categories.all %}
+                {{ category.name }}
+                {% endfor %}</p>
+            {% else %}
+                No categories.
+            {% endif %}
+
+        <p><b>Average rating:</b>
+            {% if book.average_rating %}
+                {{ book.average_rating }}
+            {% else %}
+                No value
+            {% endif %}
+        </p>
+        <p><b>Ratings count:</b>
+            {% if book.ratings_count %}
+                {{ book.ratings_count }}
+            {% else %}
+                No value
+            {% endif %}
+        </p>
+</div>
+</body>
+</html>
