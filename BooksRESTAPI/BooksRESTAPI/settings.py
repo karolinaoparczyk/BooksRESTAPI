@@ -152,3 +152,5 @@ STATIC_ROOT = "/static/"
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+from .local_settings import *
