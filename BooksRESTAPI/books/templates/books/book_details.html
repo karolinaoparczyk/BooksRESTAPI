@@ -12,10 +12,11 @@
 </head>
 <body>
 <div id="all_content">
+    <div id="logout"><a class="text-primary" href="{% url 'logout' %}?next=/login/">Logout</a></div>
     <h1 class="text-primary">{{ book.title }}</h1>
     <div id="wrapper">
-        <div id=imgdiv"><img src="{{ book.thumbnail }}" alt="{{ book.title }}" width="150" height="230"></div>
-        <div id="datadiv"><p><b class="text-primary">Authors:</b>
+        <div class="block_div"><img src="{{ book.thumbnail }}" alt="{{ book.title }}" width="150" height="230"></div>
+        <div class="block_div"><p><b class="text-primary">Authors:</b>
             {% for author in book.authors.all %}
             {{ author.name }}
             {% endfor %}</p>

@@ -4,9 +4,12 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django_tables2 import RequestConfig
 from rest_framework import generics, permissions
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.decorators import api_view, authentication_classes, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 from .filters import BookFilter, BookFilterFormHelper
-from .get_external_data import insert_data
+from .get_data_api import insert_data
 from .models import Book
 from .serializers import BookSerializer
 from .tables.tables import BookTable
@@ -25,6 +28,7 @@ class BookDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 class BookTableView(TemplateView):
+    permission_classes = (IsAuthenticated,)
     template_name = 'books/book_list.html'
 
     def get_queryset(self, **kwargs):
@@ -48,6 +52,9 @@ class BookTableView(TemplateView):
         context['table'] = table
         return context
 
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticated])
 def detail(request, book_id):
     try:
         book = Book.objects.get(pk=book_id)
@@ -56,6 +63,9 @@ def detail(request, book_id):
     return render(request, 'books/book_details.html', {'book': book})
 
 
+@api_view(['GET'])
+@authentication_classes([SessionAuthentication, BasicAuthentication])
+@permission_classes([IsAuthenticated])
 def get_books(request):
     response = requests.get('https://www.googleapis.com/books/v1/volumes?q=war')
     data = response.json()

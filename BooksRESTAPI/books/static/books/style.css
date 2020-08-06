@@ -2,10 +2,7 @@
     margin: 40px 20px;
     display: flex;
 }
-#imgdiv {
-    margin: 0px 20px;
-}
-#datadiv {
+.block_div {
     margin: 0px 20px;
 }
 
@@ -24,11 +21,35 @@ a:hover, a:visited, a:link, a:active{
     margin: 20px 20px;
 }
 
+#parent{
+    text-align: center
+}
+
 #all_content{
     margin: 40px 20px 0px 20px;
+    display: inline-block
+}
+#login_form{
+    display: inline-block
+}
+
+#title_books{
+    margin: 0px 0px 0px 18px;
+}
+
+#login_text{
+    margin: 0px 0px 20px 0px;
 }
 
 h1 {
     margin: 0px 20px 0px 20px;
 
+}
+
+#logout a{
+    margin: 0px 20px 0px 20px;
+}
+
+#login_btn{
+    margin: 20px 0px 0px 0px;
 }

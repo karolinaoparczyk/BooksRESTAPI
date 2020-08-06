@@ -57,6 +57,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}
+
 ROOT_URLCONF = 'BooksRESTAPI.urls'
 
 TEMPLATES = [
@@ -95,6 +102,11 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'books'
+LOGOUT_URL = 'logout'
+
 
 
 # Password validation

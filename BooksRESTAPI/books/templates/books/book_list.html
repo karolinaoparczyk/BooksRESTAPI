@@ -16,7 +16,8 @@
 </head>
 <body>
 <div id="all_content">
-    <h1 class="text-primary">Books</h1>
+    <div id="logout"><a class="text-primary" href="{% url 'logout' %}?next=/login/">Logout</a></div>
+    <h1 id="title_books" class="text-primary">Books</h1>
     <div id="filter_div">
         {% crispy filter.form filter.form.helper %}
         <div class="filter_clear">
