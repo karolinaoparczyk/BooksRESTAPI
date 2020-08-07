@@ -18,7 +18,6 @@ import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -29,7 +28,6 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'books-rest-api2020.herokuapp.com']
-
 
 # Application definition
 
@@ -60,10 +58,12 @@ MIDDLEWARE = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.BasicAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.SessionAuthentication',
-    ]
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
 }
 
 ROOT_URLCONF = 'BooksRESTAPI.urls'
@@ -88,7 +88,7 @@ DJANGO_TABLES2_TEMPLATE = "django_tables2/bootstrap4.html"
 
 WSGI_APPLICATION = 'BooksRESTAPI.wsgi.application'
 
-CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap4', )
+CRISPY_ALLOWED_TEMPLATE_PACKS = ('bootstrap4',)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Database
@@ -110,8 +110,6 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'books'
 LOGOUT_URL = 'logout'
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -130,7 +128,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -144,12 +141,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, '/books/static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, '/books/static')
 STATIC_URL = '/books/static/'
 
 STATICFILES_DIRS = (
@@ -162,5 +158,6 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 django_heroku.settings(locals())
 
 import dj_database_url
-prod_db  =  dj_database_url.config(conn_max_age=500)
+
+prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)

@@ -18,13 +18,15 @@ from .tables.tables import BookTable
 class BookList(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class BookDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    authentication_classes = [SessionAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class BookTableView(TemplateView):
@@ -53,7 +55,6 @@ class BookTableView(TemplateView):
         return context
 
 @api_view(['GET'])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticated])
 def detail(request, book_id):
     try:
@@ -64,7 +65,6 @@ def detail(request, book_id):
 
 
 @api_view(['GET'])
-@authentication_classes([SessionAuthentication, BasicAuthentication])
 @permission_classes([IsAuthenticated])
 def get_books(request):
     response = requests.get('https://www.googleapis.com/books/v1/volumes?q=war')
