@@ -1,2 +1,2 @@
 release: python BooksRESTAPI/manage.py migrate
-web: gunicorn books.wsgi --log-file -
+web: gunicorn BooksRESTAPI.BooksRESTAPI.wsgi --log-file -
