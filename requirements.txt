@@ -12,7 +12,7 @@ django-bootstrap-form==3.4
 django-bootstrap3==14.1.0
 django-bootstrap4==2.2.0
 django-crispy-forms==1.9.2
-django-debug-toolbar==2.2
+django-debug-toolbar==2.2.1
 django-filter==2.3.0
 django-heroku==0.3.1
 django-organizations==1.1.2
